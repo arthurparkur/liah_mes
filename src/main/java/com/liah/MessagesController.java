@@ -6,11 +6,21 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class MessagesController {
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public Greeting greeting(Message message) throws Exception {
-        Thread.sleep(1000); // simulated delay
-        System.out.println(message.getName());
-        return new Greeting("Hello, " + message.getName() + "!");
+    @MessageMapping("/auth")
+    @SendTo("/client")
+    public Message auth(Message smessage) throws InterruptedException {
+        System.out.println(smessage.getType());
+        System.out.println(smessage.getMessageContent());
+        Thread.sleep(1000);
+        return new Message("auth", "Hello, " + smessage.getMessageContent() + "!");
     }
+
+    /*@MessageMapping("/auth")
+    @SendTo("/client")
+    public Greeting greeting(Message message) throws Exception {
+        Thread.sleep(1000);
+        System.out.println(message.getContent());
+        return new Greeting("Hello, " + message.getContent() + "!");
+    }*/
 }
+

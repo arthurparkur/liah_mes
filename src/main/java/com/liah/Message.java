@@ -2,19 +2,25 @@ package com.liah;
 
 public class Message {
 
-    private String name;
+    private String type;
+    private String messageContent;
 
     public Message() {}
 
-    public Message(String name) {
-        this.name = name;
+    public Message(String type, String messageContent) {
+        this.type = type;
+        this.messageContent = messageContent;
     }
 
-    public String getName() {
-        return name;
+    public String getMessageContent() {
+        return messageContent;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void getContent(String messageContent) {
+        this.messageContent = messageContent;
+    }
+
+    public String getType() {
+        return type;
     }
 }
