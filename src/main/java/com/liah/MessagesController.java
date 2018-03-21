@@ -1,5 +1,8 @@
 package com.liah;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -9,8 +12,8 @@ public class MessagesController {
     @MessageMapping("/auth")
     @SendTo("/client")
     public Message auth(Message smessage) throws InterruptedException {
-        System.out.println(smessage.getType());
-        System.out.println(smessage.getMessageContent());
+        Logger logger = LoggerFactory.getLogger(MessagesController.class);
+        logger.info("Hello World");
         Thread.sleep(1000);
         return new Message("auth", "Hello, " + smessage.getMessageContent() + "!");
     }
